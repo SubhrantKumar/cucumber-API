@@ -12,10 +12,10 @@ import io.restassured.path.json.JsonPath;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
+import resources.APIResources;
 import resources.TestDataBuild;
 import resources.Utils;
 import static org.junit.Assert.*;
-
 import java.io.IOException;
 
 public class stepDefination extends Utils {
@@ -25,18 +25,22 @@ public class stepDefination extends Utils {
 	
 	TestDataBuild data = new TestDataBuild();
 
-	@Given("Add Place Payload")
-	public void add_place_payload() throws IOException {
-		resp = given().spec(reuestSpecification()).body(data.addPlacePayload());
-		
+	@Given("Add Place Payload with {string} {string} {string}")
+	public void add_place_payload_with(String name, String language, String address) throws IOException
+	{
+		resp = given().spec(reuestSpecification()).body(data.addPlacePayload(name, language, address));
 	}
 
-	@When("user calls {string} with Post http request")
-	public void user_calls_with_post_http_request(String string) {
+	@When("user calls {string} with {string} http request")
+	public void user_calls_with_post_http_request(String resource, String method) {
 		
+		APIResources resourceAPI=APIResources.valueOf(resource);
         res = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
-		response = resp.when().post("/maps/api/place/add/json").then().spec(res).extract().response();
-		
+        
+        if(method.equalsIgnoreCase("POST"))
+		response = resp.when().post(resourceAPI.getResource());
+        else if(method.equalsIgnoreCase("GET"))
+    		response = resp.when().get(resourceAPI.getResource());
 	}
 
 	@Then("the API call is success with status code {int}")

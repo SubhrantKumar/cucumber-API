@@ -14,28 +14,30 @@ import io.restassured.http.ContentType;
 import io.restassured.specification.RequestSpecification;
 
 public class Utils {
-	RequestSpecification req;
 	
+ static RequestSpecification req;
+
 	public RequestSpecification reuestSpecification() throws IOException {
-		
-		PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
-		
-	req= new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")) //give the key name and it will get the value for the same
-				.addQueryParam("key", "qaclick123")
-				.addFilter(RequestLoggingFilter.logRequestTo(log))
-				.addFilter(ResponseLoggingFilter.logResponseTo(log))				
-				.setContentType(ContentType.JSON).build();
+
+		if (req == null) 
+		{
+			PrintStream log = new PrintStream(new FileOutputStream("logging.txt"));
+			req = new RequestSpecBuilder().setBaseUri(getGlobalValue("baseUrl")) // give the key name and it will get
+																					// the value for the same
+					.addQueryParam("key", "qaclick123").addFilter(RequestLoggingFilter.logRequestTo(log))
+					.addFilter(ResponseLoggingFilter.logResponseTo(log)).setContentType(ContentType.JSON).build();
+			return req;
+		}
 		return req;
 	}
-	
+
 	public static String getGlobalValue(String key) throws IOException {
-		
-		
+
 		Properties prop = new Properties();
-		FileInputStream fis = new FileInputStream("C:\\Users\\Subhrant\\git\\ApiFramework\\APIFramework\\src\\test\\java\\resources\\global.properties");
-		prop.load(fis);	
-		return	prop.getProperty(key);	
-		
-		
+		FileInputStream fis = new FileInputStream(
+				"C:\\Users\\Subhrant\\git\\ApiFramework\\APIFramework\\src\\test\\java\\resources\\global.properties");
+		prop.load(fis);
+		return prop.getProperty(key);
+
 	}
 }

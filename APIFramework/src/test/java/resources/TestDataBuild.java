@@ -9,13 +9,13 @@ import pojo.Location;
 
 public class TestDataBuild {
 
-	public AddPlace addPlacePayload() {
+	public AddPlace addPlacePayload(String name, String language, String address) {
 
 		AddPlace g = new AddPlace();
 		g.setAccuracy(50);
-		g.setAddress("Berhampur");
-		g.setLanguage("Odia");
-		g.setName("subhrant");
+		g.setAddress(address);
+		g.setLanguage(language);
+		g.setName(name);
 		g.setPhone_number("+91 9937441761");
 		
 		List<String> mylist = new ArrayList<String>();
