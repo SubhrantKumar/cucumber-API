@@ -17,7 +17,7 @@ public class TestDataBuild {
 		g.setLanguage(language);
 		g.setName(name);
 		g.setPhone_number("+91 9937441761");
-		
+
 		List<String> mylist = new ArrayList<String>();
 		mylist.add("Xyz");
 		mylist.add("acc");
@@ -29,7 +29,12 @@ public class TestDataBuild {
 		l.setLng(33.427362);
 		g.setLocation(l);
 		return g;
+	}
+	public String deletePlacePayload(String placeId) {
+		return "{\\r\\n    \\\"place_id\\\":\\\""+placeId+"\\\"\\r\\n}\\r\\n";
 		
 	}
+	
+	
 
 }

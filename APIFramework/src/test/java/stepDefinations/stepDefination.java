@@ -22,6 +22,7 @@ public class stepDefination extends Utils {
 	RequestSpecification resp;
 	Response response;
 	ResponseSpecification res;
+	static String placeId;
 	
 	TestDataBuild data = new TestDataBuild();
 
@@ -52,10 +53,29 @@ public class stepDefination extends Utils {
 
 	@And("{string} in response body is {string}")
 	public void in_response_body_is(String keyValue, String expectedValue) {
-		String respon1 = response.asString();
-		JsonPath js = new JsonPath(respon1);
-		assertEquals(js.get(keyValue).toString(), expectedValue);
+		
+		assertEquals(getJsonPath(response, keyValue), expectedValue);
 
 	}
+	
+
+@Then("verify place_Id created maps to {string} using {string}")
+public void verify_place_id_created_maps_to_using(String expectedName, String resource) throws IOException {
+ 
+	//request spec
+	placeId=getJsonPath(response, "place_id");
+	resp = given().spec(reuestSpecification()).queryParam("place_id", placeId); 
+	user_calls_with_post_http_request(resource, "GET");
+	assertEquals(getJsonPath(response, "name"),expectedName );
+}
+
+
+
+@Given("DeletePlace Payload")
+public void delete_place_payload() throws IOException {
+ resp=  given().spec(reuestSpecification()).body(data.deletePlacePayload(placeId));
+}
+
+	
 
 }
