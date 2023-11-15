@@ -45,12 +45,15 @@ public class Utils {
 	
 	
 	
-	public String getJsonPath(Response response, String key)
+	public String getJsonPath(Response respon, String key)
 	{
-		String resp = response.asString();
+		String resp = respon.asString();
 		JsonPath js = new JsonPath(resp);
-		return js.get(key).toString();
-		
+String value=js.get(key).toString();
+		return value ;
 		
 	}
+	
+	
+	
 }

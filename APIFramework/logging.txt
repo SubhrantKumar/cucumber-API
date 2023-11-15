@@ -27,7 +27,7 @@ Body:
     "language": "Kannada"
 }
 HTTP/1.1 200 OK
-Date: Tue, 14 Nov 2023 15:27:41 GMT
+Date: Wed, 15 Nov 2023 07:29:23 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
@@ -40,32 +40,46 @@ Content-Type: application/json;charset=UTF-8
 
 {
     "status": "OK",
-    "place_id": "ce55dc0ccd961ed30e8324687563e10e",
+    "place_id": "567ab23cc5be16c86dfcc6519384a454",
     "scope": "APP",
-    "reference": "694b9a82aea951166188eef4a3b1131c694b9a82aea951166188eef4a3b1131c",
-    "id": "694b9a82aea951166188eef4a3b1131c"
+    "reference": "251cc85b29bc06370a8970d7aa47a482251cc85b29bc06370a8970d7aa47a482",
+    "id": "251cc85b29bc06370a8970d7aa47a482"
 }
-Request method:	POST
-Request URI:	https://rahulshettyacademy.com/maps/api/place/delete/json?key=qaclick123
+Request method:	GET
+Request URI:	https://rahulshettyacademy.com/maps/api/place/get/json?key=qaclick123&place_id=567ab23cc5be16c86dfcc6519384a454
 Proxy:			<none>
 Request params:	<none>
 Query params:	key=qaclick123
+				place_id=567ab23cc5be16c86dfcc6519384a454
 Form params:	<none>
 Path params:	<none>
 Headers:		Accept=*/*
 				Content-Type=application/json
 Cookies:		<none>
 Multiparts:		<none>
-Body:
-{\r\n    \"place_id\":\"ce55dc0ccd961ed30e8324687563e10e\"\r\n}\r\n
+Body:			<none>
 HTTP/1.1 200 OK
-Date: Tue, 14 Nov 2023 15:27:42 GMT
+Date: Wed, 15 Nov 2023 07:29:24 GMT
 Server: Apache/2.4.52 (Ubuntu)
 Access-Control-Allow-Origin: *
 Access-Control-Allow-Methods: POST
 Access-Control-Max-Age: 3600
 Access-Control-Allow-Headers: Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With
-Content-Length: 0
+Content-Length: 213
 Keep-Alive: timeout=5, max=100
 Connection: Keep-Alive
-Content-Type: application/json; charset=UTF-8
+Content-Type: application/json;charset=UTF-8
+
+{
+    "location": {
+        "latitude": "-38.383494",
+        "longitude": "33.427362"
+    },
+    "accuracy": "50",
+    "name": "Subhrant",
+    "phone_number": "+91 9937441761",
+    "address": "Bengaluru",
+    "types": "Xyz,acc",
+    "website": "Google maps",
+    "language": "Kannada"
+}
